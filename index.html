@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Forever With You 🫂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:Poppins,sans-serif;
+overflow-x:hidden;
+background:#000;
+color:white;
+
+}
+
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-5;
+
+}
+
+#loading{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:99999;
+
+}
+
+.loader{
+
+width:90px;
+height:90px;
+border-radius:50%;
+border:5px solid rgba(255,255,255,.2);
+border-top:5px solid white;
+animation:spin 1.5s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.loadingText{
+
+margin-top:25px;
+font-size:18px;
+letter-spacing:2px;
+opacity:.8;
+
+}
+
+.hero{
+
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+
+background:
+
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),
+url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+
+}
+
+.hero h1{
+
+font-family:"Great Vibes";
+font-size:90px;
+
+text-shadow:
+
+0 0 25px pink,
+0 0 60px white;
+
+animation:fadeDown 2s;
+
+}
+
+.hero h2{
+
+margin-top:20px;
+font-size:22px;
+font-weight:300;
+animation:fadeUp 2s;
+
+}
+
+.hero button{
+
+margin-top:45px;
+padding:18px 45px;
+border:none;
+border-radius:60px;
+background:white;
+color:#ff4d88;
+font-size:20px;
+cursor:pointer;
+transition:.4s;
+
+box-shadow:
+
+0 0 25px pink;
+
+}
+
+.hero button:hover{
+
+transform:scale(1.08);
+
+}
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+transform:translateY(-60px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(60px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.section{
+
+padding:100px 25px;
+
+background:
+
+linear-gradient(
+180deg,
+#1a0010,
+#290018,
+#000
+);
+
+}
+
+.glass{
+
+max-width:950px;
+
+margin:auto;
+
+padding:40px;
+
+border-radius:35px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+
+0 0 45px rgba(255,192,203,.25);
+
+}
+
+.title{
+
+font-family:"Great Vibes";
+
+font-size:65px;
+
+margin-bottom:35px;
+
+text-align:center;
+
+}
+
+.typing{
+
+font-size:19px;
+
+line-height:2;
+
+white-space:pre-line;
+
+min-height:450px;
+
+}
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+margin-top:50px;
+
+}
+
+.gallery img{
+
+width:100%;
+
+height:320px;
+
+object-fit:cover;
+
+border-radius:22px;
+
+cursor:pointer;
+
+transition:.5s;
+
+box-shadow:
+
+0 0 25px rgba(255,182,193,.45);
+
+}
+
+.gallery img:hover{
+
+transform:scale(1.06) rotate(-1deg);
+
+box-shadow:
+
+0 0 40px rgba(255,182,193,.8);
+
+}
+
+.music{
+
+margin-top:70px;
+
+text-align:center;
+
+}
+
+.music button{
+
+padding:18px 40px;
+
+border:none;
+
+border-radius:50px;
+
+background:#fff;
+
+color:#ff4d88;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 0 20px pink;
+
+}
+
+.music button:hover{
+
+transform:scale(1.08);
+
+}
+
+#loveMessage{
+
+margin-top:35px;
+
+font-size:28px;
+
+display:none;
+
+animation:fade 1.2s;
+
+font-family:"Great Vibes";
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.heart{
+
+position:fixed;
+
+top:-30px;
+
+pointer-events:none;
+
+animation:fall linear forwards;
+
+z-index:999;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-5vh) rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(110vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+footer{
+
+padding:80px 20px;
+
+text-align:center;
+
+background:#000;
+
+font-size:18px;
+
+line-height:2;
+
+opacity:.9;
+
+}
+
+.lightbox{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.9);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+}
+
+.lightbox img{
+
+max-width:90%;
+
+max-height:90%;
+
+border-radius:20px;
+
+box-shadow:0 0 40px pink;
+
+}
+
+.close{
+
+position:absolute;
+
+top:25px;
+
+right:35px;
+
+font-size:40px;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="loading">
+
+<div class="loader"></div>
+
+<div class="loadingText">
+
+Loading Love...
+
+</div>
+
+</div>
+
+<canvas id="stars"></canvas>
+
+<section class="hero">
+
+<h1>Forever With You 🫂</h1>
+
+<h2>
+
+Untuk
+
+<b>Cihaa Honey🤍</b>
+
+</h2>
+
+<button onclick="startLove()">
+
+🤍 Touch My Heart
+
+</button>
+
+</section>
+
+<section class="section">
+
+<div class="glass">
+
+<div class="title">
+
+A Letter For You 🤍
+
+</div>
+
+<div class="typing" id="typing"></div>
